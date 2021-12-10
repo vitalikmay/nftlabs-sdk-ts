@@ -386,6 +386,7 @@ export class BundleModule extends ModuleWithRoles<NFTBundleContract> {
     // royalties through an interface. Currently this function is
     // duplicated across 4 modules
     const { metadata } = await this.getMetadata();
+    console.log(metadata);
     const encoded: string[] = [];
     if (!metadata) {
       throw new Error("No metadata found, this module might be invalid!");
@@ -401,6 +402,32 @@ export class BundleModule extends ModuleWithRoles<NFTBundleContract> {
     );
     encoded.push(
       this.contract.interface.encodeFunctionData("setRoyaltyBps", [amount]),
+    );
+    encoded.push(
+      this.contract.interface.encodeFunctionData("setContractURI", [uri]),
+    );
+    return await this.sendTransaction("multicall", [encoded]);
+  }
+
+  public async setRoyaltyRecipient(
+    address: string,
+  ): Promise<TransactionReceipt> {
+    const { metadata } = await this.getMetadata();
+    console.log(metadata);
+    const encoded: string[] = [];
+    if (!metadata) {
+      throw new Error("No metadata found, this module might be invalid!");
+    }
+    const uri = await this.sdk.getStorage().uploadMetadata(
+      {
+        ...metadata,
+        fee_recipient: address,
+      },
+      this.address,
+      await this.getSignerAddress(),
+    );
+    encoded.push(
+      this.contract.interface.encodeFunctionData("setRoyalty", [address]),
     );
     encoded.push(
       this.contract.interface.encodeFunctionData("setContractURI", [uri]),
