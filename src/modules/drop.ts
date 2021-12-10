@@ -287,7 +287,19 @@ export class DropModule extends ModuleWithRoles<Drop> {
         }
       }
     }
-    await this.sendTransaction("claim", [quantity, proofs], overrides);
+    const receipt = await this.sendTransaction(
+      "claim",
+      [quantity, proofs],
+      overrides,
+    );
+    const event = this.parseEventLogs("Claimed", receipt?.logs);
+    console.log(event);
+
+    // 11, 12, 13
+    // start = 11, quantity = 3
+
+    // const startTokenId = event.startTokenId.;
+    // const tokenIds =
   }
 
   public async burn(tokenId: BigNumberish): Promise<TransactionReceipt> {

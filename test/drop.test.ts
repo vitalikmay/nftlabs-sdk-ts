@@ -1,11 +1,12 @@
 import { AddressZero } from "@ethersproject/constants";
 import { BigNumber, ethers } from "ethers";
+import { readFileSync } from "fs";
 import ClaimConditionFactory from "../src/factories/ClaimConditionFactory";
 import { DropModule, ThirdwebSDK } from "../src/index";
 
 global.fetch = require("node-fetch");
 
-const RPC_URL = "https://matic-mumbai.chainstacklabs.com";
+const RPC_URL = "http://localhost:8545";
 
 describe("Drop Module", async () => {
   let sdk: ThirdwebSDK;
@@ -39,7 +40,7 @@ describe("Drop Module", async () => {
      * the test address starting with 0xE79
      */
     dropModule = sdk.getDropModule(
-      "0x3705506b3ce08b94cf8b1EA41CDe005669B45e37",
+      "0x671BB1a6371cC9aCd4B1D9994181ff6426936Ddf",
     );
     // This will get the factory of an existing drop
     factory = await dropModule.getMintConditionsFactory();
@@ -74,5 +75,32 @@ describe("Drop Module", async () => {
     const converted = factory.buildConditions();
     console.log(converted);
     await dropModule.setMintConditions(factory);
+  });
+
+  it.skip("should allow you to mint 10k tokens", async () => {
+    const image = readFileSync("test/3510820011_4f558b6dea_b.jpg");
+    const imageUri = await sdk.getStorage().upload(image);
+
+    const metadata = {
+      name: "Test",
+      description: "Test",
+      image: imageUri,
+    };
+
+    console.log("assembling tokens");
+    const tokens = [];
+    for (let i = 0; i < 100; i++) {
+      tokens.push({
+        ...metadata,
+      });
+    }
+
+    console.log("minting batch");
+    // await dropModule.mintBatch(tokens);
+  });
+
+  it("should return the newly minted token ids", async () => {
+    // await dropModule.lazyMintAmount(100);
+    await dropModule.claim(2);
   });
 });
