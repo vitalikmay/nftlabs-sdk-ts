@@ -59,12 +59,12 @@ describe("Bundle Module (aka Collection Module)", async () => {
 
     await bundleDropModule.setClaimCondition("0", factory);
     for (let i = 0; i < testSigners.length; i++) {
+      assert(adminWallet.address !== testSigners[i].address);
       await adminWallet.sendTransaction({
         to: testSigners[i].address,
-        value: await ethers.utils.parseEther("0.1"),
+        value: ethers.utils.parseEther("1.0"),
       });
       sdk.setProviderOrSigner(testSigners[i].connect(adminWallet.provider));
-
       await bundleDropModule.claim(0, 1);
       console.log("claimed successfully for ", i);
     }
