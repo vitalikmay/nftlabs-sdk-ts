@@ -60,7 +60,9 @@ describe("Bundle Module (aka Collection Module)", async () => {
     await bundleDropModule.setClaimCondition("0", factory);
     for (let i = 0; i < testSigners.length; i++) {
       assert(adminWallet.address !== testSigners[i].address);
+      console.log(testSigners[i].address);
       await adminWallet.sendTransaction({
+        from: adminWallet.address,
         to: testSigners[i].address,
         value: ethers.utils.parseEther("1.0"),
       });

@@ -13,7 +13,7 @@ describe("ITransferable", async () => {
     await sdk.setProviderOrSigner(adminWallet);
   });
 
-  it("should restrict token transfers", async () => {
+  it.skip("should restrict token transfers", async () => {
     const tokenModule = await appModule.deployTokenModule({
       name: "Token Module",
       symbol: "TKN",
@@ -35,7 +35,7 @@ describe("ITransferable", async () => {
     }
   });
 
-  it("should restrict nft transfers", async () => {
+  it.skip("should restrict nft transfers", async () => {
     const module = await appModule.deployNftModule({
       name: "Nft Module",
       sellerFeeBasisPoints: 100,
@@ -57,7 +57,7 @@ describe("ITransferable", async () => {
     }
   });
 
-  it("should restrict bundle transfers", async () => {
+  it.skip("should restrict bundle transfers", async () => {
     const module = await appModule.deployBundleModule({
       name: "Bundle Module",
       sellerFeeBasisPoints: 100,

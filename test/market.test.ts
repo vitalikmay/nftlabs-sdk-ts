@@ -37,7 +37,7 @@ describe("Market Module", async () => {
     });
   });
 
-  it("should throw MissingRoleError when trying to list without a lister role", async () => {
+  it.skip("should throw MissingRoleError when trying to list without a lister role", async () => {
     sdk.setProviderOrSigner(adminWallet);
     await nftModule.mintTo(bobWallet.address, {
       name: "Test",
@@ -61,7 +61,7 @@ describe("Market Module", async () => {
       }
     }
   });
-  it("should throw a QuantityAboveLimitError error when trying to buy more than the tokensPerBuy specified", async () => {
+  it.skip("should throw a QuantityAboveLimitError error when trying to buy more than the tokensPerBuy specified", async () => {
     sdk.setProviderOrSigner(adminWallet);
     await nftModule.mintTo(bobWallet.address, {
       name: "Test",
@@ -86,7 +86,7 @@ describe("Market Module", async () => {
     }
   });
 
-  it("should throw a descriptive error while listing from an account which is not given the role", async () => {
+  it.skip("should throw a descriptive error while listing from an account which is not given the role", async () => {
     sdk.setProviderOrSigner(adminWallet);
     await nftModule.mintTo(bobWallet.address, {
       name: "Test",

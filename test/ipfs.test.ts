@@ -33,7 +33,7 @@ describe("IPFS Uploads", async () => {
     return response;
   }
 
-  it("should upload a file through any property, even when it is in an object nested inside another object", async () => {
+  it.skip("should upload a file through any property, even when it is in an object nested inside another object", async () => {
     try {
       const upload = await sdk.getStorage().uploadMetadata({
         name: "test",
@@ -55,7 +55,7 @@ describe("IPFS Uploads", async () => {
     }
   });
 
-  it("should not upload the string to IPFS", async () => {
+  it.skip("should not upload the string to IPFS", async () => {
     const upload = await sdk.getStorage().uploadMetadata({
       image:
         "ipfs://QmZsU8nTTexTxPzCKZKqo3Ntf5cUiWMRahoLmtpimeaCiT/face_parts/Asset%20331.svg",
@@ -66,7 +66,7 @@ describe("IPFS Uploads", async () => {
     );
   });
 
-  it("should upload an MP4 file when passed in the animation_url property", async () => {
+  it.skip("should upload an MP4 file when passed in the animation_url property", async () => {
     const upload = await sdk.getStorage().uploadMetadata({
       animation_url: readFileSync("test/test.mp4"),
     });
@@ -76,7 +76,7 @@ describe("IPFS Uploads", async () => {
     );
   });
 
-  it("should upload many objects correctly", async () => {
+  it.skip("should upload many objects correctly", async () => {
     const sampleObjects: { id: number; description: string; prop: string }[] = [
       {
         id: 0,
@@ -99,7 +99,7 @@ describe("IPFS Uploads", async () => {
     }
   });
 
-  it("should upload many Buffers correctly", async () => {
+  it.skip("should upload many Buffers correctly", async () => {
     const sampleObjects: Buffer[] = [
       readFileSync("test/test.mp4"),
       readFileSync("test/test.mp4"),
@@ -108,7 +108,7 @@ describe("IPFS Uploads", async () => {
     const cid = await sdk.getStorage().uploadBatch(sampleObjects);
   });
 
-  it("should upload properties recursively in batch", async () => {
+  it.skip("should upload properties recursively in batch", async () => {
     const sampleObjects: any[] = [
       {
         name: "test 0",

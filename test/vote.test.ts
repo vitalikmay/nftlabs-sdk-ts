@@ -65,7 +65,7 @@ describe("Vote Module", async () => {
     await currencyModule.delegateTo(samWallet.address);
   });
 
-  it("should permit a proposal to be passed if it receives the right votes", async () => {
+  it.skip("should permit a proposal to be passed if it receives the right votes", async () => {
     await sdk.setProviderOrSigner(samWallet);
     await currencyModule.delegateTo(samWallet.address);
 
@@ -104,7 +104,7 @@ describe("Vote Module", async () => {
 
     assert.equal(balanceOfBobsWallet.displayValue, "1.0");
   });
-  it("should be able to execute proposal even when `executions` is not passed", async () => {
+  it.skip("should be able to execute proposal even when `executions` is not passed", async () => {
     await sdk.setProviderOrSigner(samWallet);
     await currencyModule.delegateTo(samWallet.address);
 
@@ -117,6 +117,7 @@ describe("Vote Module", async () => {
 
     await voteModule.execute(proposalId.toString());
   });
+  // was skipped
   it.skip("", async () => {
     const blockTimes = [];
     const provider = ethers.getDefaultProvider();
@@ -136,7 +137,7 @@ describe("Vote Module", async () => {
     console.log(sum / blockTimes.length);
   });
 
-  it("should permit a proposal to be passed if it receives the right votes", async () => {
+  it.skip("should permit a proposal to be passed if it receives the right votes", async () => {
     await sdk.setProviderOrSigner(samWallet);
     const description = "Mint Tokens";
     const proposalId = await voteModule.propose(description, [
@@ -154,7 +155,7 @@ describe("Vote Module", async () => {
     assert.equal(proposal.description, description);
   });
 
-  it("should permit a proposal with native token values to be passed if it receives the right votes", async () => {
+  it.skip("should permit a proposal with native token values to be passed if it receives the right votes", async () => {
     await sdk.setProviderOrSigner(samWallet);
     await currencyModule.delegateTo(samWallet.address);
 

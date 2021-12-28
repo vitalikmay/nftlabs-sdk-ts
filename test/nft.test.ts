@@ -27,7 +27,7 @@ describe("NFT Module", async () => {
     });
   });
 
-  it("should return nfts even if some are burned", async () => {
+  it.skip("should return nfts even if some are burned", async () => {
     await nftModule.mint({
       name: "Test1",
     });
@@ -39,7 +39,7 @@ describe("NFT Module", async () => {
     expect(nfts).to.be.an("array").length(2);
   });
 
-  it("should fetch a single nft", async () => {
+  it.skip("should fetch a single nft", async () => {
     await nftModule.mint({
       name: "Test1",
     });
@@ -48,7 +48,7 @@ describe("NFT Module", async () => {
     assert.equal(nft.name, "Test1");
   });
 
-  it("should return an owner as zero address for an nft that is burned", async () => {
+  it.skip("should return an owner as zero address for an nft that is burned", async () => {
     const token = await nftModule.mint({
       name: "Test2",
     });
@@ -56,7 +56,7 @@ describe("NFT Module", async () => {
     const nft = await nftModule.getWithOwner("0");
     assert.equal(nft.owner, AddressZero);
   });
-  it("should correctly mint nfts in batch", async () => {
+  it.skip("should correctly mint nfts in batch", async () => {
     console.log(await nftModule.getAllWithOwner());
     await nftModule.mintBatch([
       {

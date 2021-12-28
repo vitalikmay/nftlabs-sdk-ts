@@ -36,7 +36,7 @@ describe("Drop Module", async () => {
     });
   });
 
-  it("should allow a snapshot to be set", async () => {
+  it.skip("should allow a snapshot to be set", async () => {
     const factory = dropModule.getMintConditionsFactory();
     const phase = factory.newClaimPhase({
       startTime: new Date().getTime() / 2000,
@@ -73,7 +73,7 @@ describe("Drop Module", async () => {
     expect(roots).length(2);
   });
 
-  it("should remove merkles from the metadata when claim conditions are removed", async () => {
+  it.skip("should remove merkles from the metadata when claim conditions are removed", async () => {
     const factory = dropModule.getMintConditionsFactory();
     const phase = factory.newClaimPhase({
       startTime: new Date(),
@@ -119,7 +119,7 @@ describe("Drop Module", async () => {
     expect(JSON.stringify(newMerkles)).to.eq("{}");
   });
 
-  it("allow all addresses in the merkle tree to claim", async () => {
+  it.skip("allow all addresses in the merkle tree to claim", async () => {
     const factory = dropModule.getClaimConditionsFactory();
     const phase = factory.newClaimPhase({
       startTime: new Date(),
@@ -165,7 +165,7 @@ describe("Drop Module", async () => {
     }
   });
 
-  it("should correctly upload metadata for each nft", async () => {
+  it.skip("should correctly upload metadata for each nft", async () => {
     const metadatas = [];
     for (let i = 0; i < 10; i++) {
       metadatas.push({
@@ -182,7 +182,7 @@ describe("Drop Module", async () => {
     });
   });
 
-  it("should not allow claiming to someone not in the merkle tree", async () => {
+  it.skip("should not allow claiming to someone not in the merkle tree", async () => {
     const factory = dropModule.getMintConditionsFactory();
     const phase = factory.newClaimPhase({
       startTime: new Date(),
@@ -214,13 +214,13 @@ describe("Drop Module", async () => {
     assert.fail("should not reach this point, claim should have failed");
   });
 
-  it("should allow claims with default settings", async () => {
+  it.skip("should allow claims with default settings", async () => {
     await dropModule.lazyMint({ name: "name", description: "description" });
     await dropModule.setPublicMintConditions([{ maxMintSupply: 100 }]);
     await dropModule.claim(1);
   });
 
-  it("should generate valid proofs", async () => {
+  it.skip("should generate valid proofs", async () => {
     const members = [
       bobWallet.address,
       samWallet.address,
@@ -256,7 +256,7 @@ describe("Drop Module", async () => {
     }
   });
 
-  it("should return the newly claimed token", async () => {
+  it.skip("should return the newly claimed token", async () => {
     const factory = dropModule.getMintConditionsFactory();
     const phase = factory.newClaimPhase({
       startTime: new Date(),
@@ -304,7 +304,7 @@ describe("Drop Module", async () => {
       ]);
     });
 
-    it("should return false if there isn't an active claim condition", async () => {
+    it.skip("should return false if there isn't an active claim condition", async () => {
       const reasons = await dropModule.getClaimIneligibilityReasons(
         "1",
         bobWallet.address,
@@ -316,7 +316,7 @@ describe("Drop Module", async () => {
       assert.isFalse(canClaim);
     });
 
-    it("should check for the total supply", async () => {
+    it.skip("should check for the total supply", async () => {
       const factory = dropModule.getClaimConditionsFactory();
       factory.newClaimPhase({
         startTime: new Date(),
@@ -333,7 +333,7 @@ describe("Drop Module", async () => {
       assert.isFalse(canClaim);
     });
 
-    it("should check if an address has valid merkle proofs", async () => {
+    it.skip("should check if an address has valid merkle proofs", async () => {
       const factory = dropModule.getClaimConditionsFactory();
       const phase = factory.newClaimPhase({
         startTime: new Date(),
@@ -351,7 +351,7 @@ describe("Drop Module", async () => {
       assert.isFalse(canClaim);
     });
 
-    it("should check if its been long enough since the last claim", async () => {
+    it.skip("should check if its been long enough since the last claim", async () => {
       const factory = dropModule.getClaimConditionsFactory();
       factory
         .newClaimPhase({
@@ -375,7 +375,7 @@ describe("Drop Module", async () => {
       assert.isFalse(canClaim);
     });
 
-    it("should check if an address has enough native currency", async () => {
+    it.skip("should check if an address has enough native currency", async () => {
       const factory = dropModule.getClaimConditionsFactory();
       factory
         .newClaimPhase({
@@ -399,7 +399,7 @@ describe("Drop Module", async () => {
       assert.isFalse(canClaim);
     });
 
-    it("should check if an address has enough erc20 currency", async () => {
+    it.skip("should check if an address has enough erc20 currency", async () => {
       const currency = await appModule.deployCurrencyModule({
         name: "test",
         symbol: "test",
@@ -428,7 +428,7 @@ describe("Drop Module", async () => {
       assert.isFalse(canClaim);
     });
 
-    it("should return nothing if the claim is eligible", async () => {
+    it.skip("should return nothing if the claim is eligible", async () => {
       const factory = dropModule.getClaimConditionsFactory();
       const phase = factory
         .newClaimPhase({

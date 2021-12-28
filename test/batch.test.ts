@@ -28,7 +28,7 @@ describe("Batch uploading", async () => {
     console.log("Created drop module at address: ", dropModule.address);
   });
 
-  it("should upload bulk", async () => {
+  it.skip("should upload bulk", async () => {
     const folder = await readdirSync("test/images");
     const filelist = [];
     folder.forEach((file) => {

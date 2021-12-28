@@ -30,7 +30,7 @@ describe("Roles Module", async () => {
     );
   });
 
-  it("should return all assigned roles", async () => {
+  it.skip("should return all assigned roles", async () => {
     /**
      * This wallet owns only one token in the collection (that contains 6 tokens)
      */
@@ -51,7 +51,7 @@ describe("Roles Module", async () => {
    *
    */
 
-  it("should override current roles in the contract", async () => {
+  it.skip("should override current roles in the contract", async () => {
     await nftModule.setAllRoleMembers({
       admin: [adminWallet.address],
       minter: [
@@ -86,7 +86,7 @@ describe("Roles Module", async () => {
     );
   });
 
-  it("Replace all roles - confirm that all roles were replaced (not just added)", async () => {
+  it.skip("Replace all roles - confirm that all roles were replaced (not just added)", async () => {
     await nftModule.setAllRoleMembers({
       admin: [
         adminWallet.address,
