@@ -1,7 +1,7 @@
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { assert } from "chai";
-import { appModule, sdk, signers } from "../before.test";
-import { RestrictedTransferError } from "../../src/common/error";
+import { appModule, sdk, signers } from "./before.test";
+import { RestrictedTransferError } from "../src/common/error";
 
 describe("ITransferable", async () => {
   let adminWallet: SignerWithAddress,

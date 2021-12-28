@@ -3,6 +3,7 @@ import { BundleDropModule } from "../src/index";
 import { appModule, sdk, signers } from "./before.test";
 import { ethers } from "hardhat";
 import { expect, assert } from "chai";
+import { BigNumber } from "ethers";
 
 global.fetch = require("node-fetch");
 
@@ -10,7 +11,7 @@ describe("Bundle Module (aka Collection Module)", async () => {
   let bundleDropModule: BundleDropModule;
 
   let adminWallet: SignerWithAddress;
-  let testSigners: any[];
+  let testSigners: SignerWithAddress[];
   before(() => {
     [adminWallet] = signers;
     testSigners = [];
@@ -23,7 +24,12 @@ describe("Bundle Module (aka Collection Module)", async () => {
     console.timeEnd("wallet");
   });
 
-  it("should do something", async () => {
+  it("should be able to claim using 15000 addresses", async () => {
+    const token = await appModule.deployCurrencyModule({
+      name: "Test Token",
+      symbol: "TST",
+    });
+
     console.log("testSigners", testSigners.length);
     const allowList = [];
     testSigners.forEach((signer) => {
@@ -48,12 +54,17 @@ describe("Bundle Module (aka Collection Module)", async () => {
       maxQuantity: 15000,
       maxQuantityPerTransaction: 1,
     });
+    claimPhase.setPrice(1, token.address);
     await claimPhase.setSnapshot(allowList);
 
     await bundleDropModule.setClaimCondition("0", factory);
-
     for (let i = 0; i < testSigners.length; i++) {
-      sdk.setProviderOrSigner(testSigners[i]);
+      await adminWallet.sendTransaction({
+        to: testSigners[i].address,
+        value: await ethers.utils.parseEther("0.1"),
+      });
+      sdk.setProviderOrSigner(testSigners[i].connect(adminWallet.provider));
+
       await bundleDropModule.claim(0, 1);
       console.log("claimed successfully for ", i);
     }
