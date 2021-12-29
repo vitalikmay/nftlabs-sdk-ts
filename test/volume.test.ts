@@ -81,7 +81,7 @@ describe("Bundle Module (aka Collection Module)", async () => {
       await adminWallet.sendTransaction({
         from: adminWallet.address,
         to: signer.address,
-        value: ethers.utils.parseEther("0.2"),
+        value: ethers.utils.parseEther("0.02"),
       });
       assert((await signer.getBalance()).gt(0));
       const testSdk = new ThirdwebSDK(signer, {
