@@ -41,7 +41,6 @@ describe("Splits Module", async () => {
   });
 
   // TODO: Fix bug in the `getAllRecipients` function
-  // was skipped
   it.skip("should return all recipients of splits", async () => {
     const recipients = await splitsModule.getAllRecipients();
     assert.lengthOf(
@@ -51,7 +50,7 @@ describe("Splits Module", async () => {
     );
   });
 
-  it.skip("should return the correct slip percentage for an address", async () => {
+  it("should return the correct slip percentage for an address", async () => {
     assert.equal(
       (await splitsModule.getRecipientSplitPercentage(adminWallet.address))
         .splitPercentage,
@@ -60,7 +59,7 @@ describe("Splits Module", async () => {
     );
   });
 
-  it.skip("should return all the recipients along with their balances", async () => {
+  it("should return all the recipients along with their balances", async () => {
     const balances = await splitsModule.balanceOfAllRecipients();
     assert.equal(
       Object.keys(balances).length,
@@ -68,7 +67,7 @@ describe("Splits Module", async () => {
       "There should be 3 recipients",
     );
   });
-  it.skip("should return all the recipients along with their token balances", async () => {
+  it("should return all the recipients along with their token balances", async () => {
     const balances = await splitsModule.balanceOfTokenAllRecipients(
       await appModule
         .deployTokenModule({
@@ -93,7 +92,7 @@ describe("Splits Module", async () => {
    */
 
   // TODO: Move to royalty test suite
-  it.skip("should return the correct royalty recipient", async () => {
+  it("should return the correct royalty recipient", async () => {
     const recipient = await packModule.getRoyaltyRecipientAddress();
     assert.equal(
       recipient,
@@ -103,7 +102,7 @@ describe("Splits Module", async () => {
   });
 
   // TODO: Move to royalty test suite
-  it.skip("should return the correct royalty BPS", async () => {
+  it("should return the correct royalty BPS", async () => {
     const bps = await packModule.getRoyaltyBps();
     assert.equal(
       "1000",

@@ -66,7 +66,10 @@ describe("Bundle Module (aka Collection Module)", async () => {
         to: testSigners[i].address,
         value: ethers.utils.parseEther("1.0"),
       });
-      sdk.setProviderOrSigner(testSigners[i].connect(adminWallet.provider));
+      const provider = new ethers.providers.JsonRpcProvider(
+        "http://localhost:8545",
+      );
+      sdk.setProviderOrSigner(testSigners[i].connect(provider));
       await bundleDropModule.claim(0, 1);
       console.log("claimed successfully for ", i);
     }

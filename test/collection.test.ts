@@ -42,7 +42,7 @@ describe("Bundle Module (aka Collection Module)", async () => {
     collectionModule = sdk.getCollectionModule(bundleModule.address);
   });
 
-  it.skip("should return all owned collection tokens", async () => {
+  it("should return all owned collection tokens", async () => {
     await bundleModule.createAndMint({
       metadata: {
         name: "Bundle 1",
@@ -59,7 +59,7 @@ describe("Bundle Module (aka Collection Module)", async () => {
       .length(0, "Bob should not have any nfts");
   });
 
-  it.skip("should create a new collection using token", async () => {
+  it("should create a new collection using token", async () => {
     await currencyModule.mint(100);
 
     try {
@@ -76,7 +76,7 @@ describe("Bundle Module (aka Collection Module)", async () => {
     expect(nfts).to.be.an("array").length(1);
   });
 
-  it.skip("should create a new collection using NFT", async () => {
+  it("should create a new collection using NFT", async () => {
     const token = await nftModule.mint({
       name: "test",
     });
@@ -94,7 +94,7 @@ describe("Bundle Module (aka Collection Module)", async () => {
   });
 
   // TODO: This test should move to the royalty suite
-  it.skip("updates the bps in both the metadata and on-chain", async () => {
+  it("updates the bps in both the metadata and on-chain", async () => {
     const currentBps = await bundleModule.getRoyaltyBps();
     assert.equal(currentBps, 1000);
     const { metadata: cMetadata } = await bundleModule.getMetadata();
@@ -115,7 +115,7 @@ describe("Bundle Module (aka Collection Module)", async () => {
       "Fetching the BPS with the tx should return 100",
     );
   });
-  it.skip("should correctly upload nft metadata", async () => {
+  it("should correctly upload nft metadata", async () => {
     await bundleModule.createAndMintBatch([
       {
         metadata: {

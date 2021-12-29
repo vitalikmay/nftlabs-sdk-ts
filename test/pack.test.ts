@@ -101,7 +101,7 @@ describe("Pack Module", async () => {
       await createBundles();
     });
 
-    it.skip("should allow you to create a batch of packs", async () => {
+    it("should allow you to create a batch of packs", async () => {
       const [pack] = await createPacks();
 
       assert.equal(pack.creator, adminWallet.address);
@@ -109,7 +109,7 @@ describe("Pack Module", async () => {
       assert.equal(pack.metadata.name, "Pack");
     });
 
-    it.skip("should return the correct rewards", async () => {
+    it("should return the correct rewards", async () => {
       const [pack] = await createPacks();
       const rewards = await packModule.getNFTs(pack.id);
 
@@ -139,7 +139,7 @@ describe("Pack Module", async () => {
       assert.isDefined(third, "Third NFT not found");
     });
 
-    it.skip("should return correct pack supply", async () => {
+    it("should return correct pack supply", async () => {
       const [packOne, packTwo] = await createPacks();
       const balanceOne = await packModule.balance(packOne.id);
       const balanceTwo = await packModule.balance(packTwo.id);
@@ -156,7 +156,7 @@ describe("Pack Module", async () => {
       await createBundles();
     });
 
-    it.skip("pack open returns valid reward", async () => {
+    it("pack open returns valid reward", async () => {
       const pack = await createPacks();
     });
   });

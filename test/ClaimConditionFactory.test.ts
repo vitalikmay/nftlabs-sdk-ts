@@ -66,7 +66,7 @@ describe("ClaimConditionFactory", async () => {
     conditions = factory.buildConditions();
   });
 
-  it.skip("should contain all claim conditions", async () => {
+  it("should contain all claim conditions", async () => {
     chai.assert.equal(
       conditions.length,
       2,
@@ -74,7 +74,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should be in ascending order by start time", async () => {
+  it("should be in ascending order by start time", async () => {
     chai.assert.equal(
       conditions[0].maxMintSupply.toString(),
       phaseOneMaxQuantity.toString(),
@@ -82,7 +82,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should convert Date objects to epoch timestamp in seconds", async () => {
+  it("should convert Date objects to epoch timestamp in seconds", async () => {
     const secondClaim = conditions[1];
 
     chai.assert.equal(
@@ -92,7 +92,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should use the native currency if setPrice is called with no second parameter", async () => {
+  it("should use the native currency if setPrice is called with no second parameter", async () => {
     const firstClaim = conditions[0];
 
     chai.assert.equal(
@@ -102,7 +102,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should default to (MAX Uint 256) max mint supply", async () => {
+  it("should default to (MAX Uint 256) max mint supply", async () => {
     const secondClaim = conditions[1];
     chai.assert.equal(
       secondClaim.maxMintSupply,
@@ -111,7 +111,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should delete phases correctly", async () => {
+  it("should delete phases correctly", async () => {
     factory.removeClaimPhase(0);
 
     const newConditions = factory.buildConditions();
@@ -129,7 +129,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should set the prices correctly", async () => {
+  it("should set the prices correctly", async () => {
     chai.assert.equal(
       conditions[0].pricePerToken,
       phaseOnePrice,
@@ -143,7 +143,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should set the currencies correctly", async () => {
+  it("should set the currencies correctly", async () => {
     chai.assert.equal(
       conditions[0].currency,
       phaseOneCurency,
@@ -157,7 +157,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should allow overriding `maxQuantityPerTransaction`", async () => {
+  it("should allow overriding `maxQuantityPerTransaction`", async () => {
     chai.assert.equal(
       conditions[1].quantityLimitPerTransaction.toString(),
       phaseTwoMaxQuantityPerTransaction.toString(),
@@ -165,7 +165,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should set the correct default `maxQuantityPerTransaction`", async () => {
+  it("should set the correct default `maxQuantityPerTransaction`", async () => {
     chai.assert.equal(
       conditions[0].quantityLimitPerTransaction.toString(),
       ethers.constants.MaxUint256.toString(),
@@ -173,7 +173,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should set the correct default `merkleRoot`", async () => {
+  it("should set the correct default `merkleRoot`", async () => {
     chai.assert.equal(
       conditions[1].merkleRoot.toString(),
       hexZeroPad([0], 32).toString(),
@@ -181,7 +181,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should allow overriding `merkleRoot`", async () => {
+  it("should allow overriding `merkleRoot`", async () => {
     chai.assert.equal(
       conditions[0].merkleRoot.toString(),
       phaseOneMerkleRoot,
@@ -189,7 +189,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should allow overriding `waitTimePerTransactions`", async () => {
+  it("should allow overriding `waitTimePerTransactions`", async () => {
     chai.assert.equal(
       conditions[1].waitTimeSecondsLimitPerTransaction.toString(),
       phaseTwoWaitTime.toString(),
@@ -197,7 +197,7 @@ describe("ClaimConditionFactory", async () => {
     );
   });
 
-  it.skip("should default `waitTimePerTransactions` to 0", async () => {
+  it("should default `waitTimePerTransactions` to 0", async () => {
     chai.assert.equal(
       conditions[0].waitTimeSecondsLimitPerTransaction.toString(),
       "0",

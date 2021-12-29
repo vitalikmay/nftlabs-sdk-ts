@@ -19,7 +19,7 @@ describe("Recursive Testing", async () => {
       },
     };
   });
-  it.skip("should resolve all URLs when resolveGateway is set to true", async () => {
+  it("should resolve all URLs when resolveGateway is set to true", async () => {
     const resolveGateway = true;
     if (resolveGateway) {
       json = await recursiveResolveGatewayUrl(json, ipfsGatewayUrl);
@@ -39,7 +39,7 @@ describe("Recursive Testing", async () => {
       },
     });
   });
-  it.skip("should resolve all URLs when resolveGateway is set to true", async () => {
+  it("should resolve all URLs when resolveGateway is set to true", async () => {
     const resolveGateway = false;
     if (resolveGateway) {
       json = await recursiveResolveGatewayUrl(json, ipfsGatewayUrl);

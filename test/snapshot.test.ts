@@ -42,14 +42,14 @@ describe("Snapshots", async () => {
     merkleRoot = result.merkleRoot;
   });
 
-  it.skip("should generate a valid merkle root from a list of addresses", async () => {
+  it("should generate a valid merkle root from a list of addresses", async () => {
     assert.equal(
       merkleRoot,
       "0xed194a7138dce33f7dfbcfa95492f4eb414fae6cf51e8994ad70d209579a609d",
     );
   });
 
-  it.skip("should warn about duplicate leafs", async () => {
+  it("should warn about duplicate leafs", async () => {
     const duplicateLeafs = [...leafs, ...leafs];
 
     try {
@@ -64,11 +64,11 @@ describe("Snapshots", async () => {
     );
   });
 
-  it.skip("should contain the same number of claims as there are leafs", () => {
+  it("should contain the same number of claims as there are leafs", () => {
     assert.lengthOf(snapshot.claims, leafs.length);
   });
 
-  it.skip("should contain a proof for every claim", () => {
+  it("should contain a proof for every claim", () => {
     assert.lengthOf(snapshot.claims, leafs.length);
 
     snapshot.claims.forEach((claim: ClaimProof) => {
@@ -76,7 +76,7 @@ describe("Snapshots", async () => {
     });
   });
 
-  it.skip("should contain a claim for each leaf", () => {
+  it("should contain a claim for each leaf", () => {
     leafs.forEach((leaf) => {
       assert.notEqual(
         snapshot.claims.find((c: ClaimProof) => c.address === leaf),
@@ -85,7 +85,7 @@ describe("Snapshots", async () => {
     });
   });
 
-  it.skip("should upload the snapshot to storage", async () => {
+  it("should upload the snapshot to storage", async () => {
     const rawSnapshotJson = JSON.parse(await sdk.getStorage().get(uri));
     const convert = new JsonConvert();
     const deserialized = convert.deserializeObject(rawSnapshotJson, Snapshot);

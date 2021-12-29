@@ -10,7 +10,7 @@ global.fetch = require("node-fetch");
 describe.skip("Block Estimator", async () => {
   beforeEach(async () => {});
 
-  it.skip(`should return accurate estimates`, async () => {
+  it(`should return accurate estimates`, async () => {
     const ethProvider = ethers.getDefaultProvider();
     const chainId = (await ethProvider.getNetwork()).chainId;
 
