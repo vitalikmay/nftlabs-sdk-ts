@@ -135,7 +135,7 @@ describe("Bundle Module (aka Collection Module)", async () => {
     let i = 0;
     nfts.forEach(async (nft) => {
       expect(nft.metadata.name).to.be.equal(`Test${i}`);
-      i;
+      i++;
     });
   });
 });
