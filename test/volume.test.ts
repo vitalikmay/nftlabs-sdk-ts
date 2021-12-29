@@ -1,6 +1,10 @@
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
-import { BundleDropModule } from "../src/index";
-import { appModule, sdk, signers } from "./before.test";
+import {
+  BundleDropModule,
+  NATIVE_TOKEN_ADDRESS,
+  ThirdwebSDK,
+} from "../src/index";
+import { appModule, registryAddress, signers } from "./before.test";
 import { ethers } from "hardhat";
 import { expect, assert } from "chai";
 import { BigNumber } from "ethers";
@@ -51,27 +55,36 @@ describe("Bundle Module (aka Collection Module)", async () => {
     const factory = bundleDropModule.getClaimConditionFactory();
     const claimPhase = factory.newClaimPhase({
       startTime: new Date(),
-      maxQuantity: 15000,
+      maxQuantity: 30000,
       maxQuantityPerTransaction: 1,
     });
-    claimPhase.setPrice(1, token.address);
+    claimPhase.setPrice(ethers.utils.parseEther("0.01"), NATIVE_TOKEN_ADDRESS);
     await claimPhase.setSnapshot(allowList);
 
     await bundleDropModule.setClaimCondition("0", factory);
+
+    const claims = [];
     for (let i = 0; i < testSigners.length; i++) {
       assert(adminWallet.address !== testSigners[i].address);
-      console.log(testSigners[i].address);
+      const signer = testSigners[i].connect(ethers.provider);
       await adminWallet.sendTransaction({
         from: adminWallet.address,
-        to: testSigners[i].address,
-        value: ethers.utils.parseEther("1.0"),
+        to: signer.address,
+        value: ethers.utils.parseEther("0.2"),
       });
-      const provider = await new ethers.providers.JsonRpcProvider(
-        "http://127.0.0.1:8545",
+      assert((await signer.getBalance()).gt(0));
+      const sdk = new ThirdwebSDK(signer, {
+        ipfsGatewayUrl: "https://ipfs.thirdweb.com/ipfs/",
+        registryContractAddress: registryAddress,
+        maxGasPriceInGwei: 10000,
+      });
+      claims.push(
+        sdk.getBundleDropModule(bundleDropModule.address).claim(0, 1),
       );
-      sdk.setProviderOrSigner(testSigners[i].connect(provider));
-      await bundleDropModule.claim(0, 1);
-      console.log("claimed successfully for ", i);
     }
+
+    console.log("promise.all claiming");
+    await Promise.all(claims);
+    console.log("claimed successfully for all");
   });
 });

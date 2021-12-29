@@ -39,4 +39,4 @@ before(async () => {
   appModule = await sdk.getAppModule(address);
 });
 
-export { appModule, sdk, signers };
+export { appModule, sdk, signers, registryAddress };
