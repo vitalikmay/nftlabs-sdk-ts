@@ -20,7 +20,7 @@ describe("Bundle Module (aka Collection Module)", async () => {
     [adminWallet] = signers;
     testSigners = [];
     console.time("wallet");
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 15000; i++) {
       testSigners.push(new ethers.Wallet.createRandom());
       console.log(`${testSigners[i].address} was created`);
     }
@@ -62,8 +62,19 @@ describe("Bundle Module (aka Collection Module)", async () => {
     await claimPhase.setSnapshot(allowList);
 
     await bundleDropModule.setClaimCondition("0", factory);
-
-    const claims = [];
+    const sdk = new ThirdwebSDK(adminWallet, {
+      ipfsGatewayUrl: "https://ipfs.thirdweb.com/ipfs/",
+      registryContractAddress: registryAddress,
+      maxGasPriceInGwei: 10000,
+    });
+    let error = false;
+    await sdk
+      .getBundleDropModule(bundleDropModule.address)
+      .claim(0, 1)
+      .catch((e) => {
+        error = true;
+      });
+    assert.equal(error, true);
     for (let i = 0; i < testSigners.length; i++) {
       assert(adminWallet.address !== testSigners[i].address);
       const signer = testSigners[i].connect(ethers.provider);
@@ -73,18 +84,15 @@ describe("Bundle Module (aka Collection Module)", async () => {
         value: ethers.utils.parseEther("0.2"),
       });
       assert((await signer.getBalance()).gt(0));
-      const sdk = new ThirdwebSDK(signer, {
+      const testSdk = new ThirdwebSDK(signer, {
         ipfsGatewayUrl: "https://ipfs.thirdweb.com/ipfs/",
         registryContractAddress: registryAddress,
         maxGasPriceInGwei: 10000,
       });
-      claims.push(
-        sdk.getBundleDropModule(bundleDropModule.address).claim(0, 1),
-      );
+      await testSdk.getBundleDropModule(bundleDropModule.address).claim(0, 1);
+      console.log("claimed", i);
     }
 
-    console.log("promise.all claiming");
-    await Promise.all(claims);
     console.log("claimed successfully for all");
   });
 });
