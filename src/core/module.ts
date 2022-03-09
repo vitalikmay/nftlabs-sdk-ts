@@ -1,4 +1,4 @@
-import { AccessControlEnumerable } from "@3rdweb/contracts";
+import { AccessControlEnumerable } from "3rdweb-contracts";
 import { Log, TransactionReceipt } from "@ethersproject/providers";
 import {
   BaseContract,

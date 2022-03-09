@@ -1,4 +1,4 @@
-import { Marketplace__factory } from "@3rdweb/contracts";
+import { Marketplace__factory } from "3rdweb-contracts";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { assert } from "chai";
 import { BigNumber, BigNumberish, ethers } from "ethers";

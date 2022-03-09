@@ -14,7 +14,7 @@ import {
   SignatureMint721__factory,
   Splits__factory,
   VotingGovernor__factory,
-} from "@3rdweb/contracts";
+} from "3rdweb-contracts";
 import { AddressZero } from "@ethersproject/constants";
 import { TransactionReceipt } from "@ethersproject/providers";
 import { BigNumber, Contract, ethers, Signer } from "ethers";

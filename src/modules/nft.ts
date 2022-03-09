@@ -4,13 +4,13 @@ import {
   NFT__factory,
   SignatureMint721,
   SignatureMint721__factory,
-} from "@3rdweb/contracts";
-import { MintedBatchEvent, MintedEvent } from "@3rdweb/contracts/dist/NFT";
+} from "3rdweb-contracts";
+import { MintedBatchEvent, MintedEvent } from "3rdweb-contracts/dist/NFT";
 import {
   MintRequestStructOutput,
   TokenMintedEvent,
   MintWithSignatureEvent,
-} from "@3rdweb/contracts/dist/SignatureMint721";
+} from "3rdweb-contracts/dist/SignatureMint721";
 import { AddressZero } from "@ethersproject/constants";
 import { TransactionReceipt } from "@ethersproject/providers";
 import { BigNumber, BigNumberish, Signer } from "ethers";

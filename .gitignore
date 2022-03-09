@@ -2,7 +2,14 @@ node_modules/
 lib/
 temp/
 bin/
-dist/
+
+
+!dist/
+dist/**
+!dist/3web.udm.js
+!dist/3web.udm.js.map
+
+
 .idea
 .vscode
 yarn-error.log

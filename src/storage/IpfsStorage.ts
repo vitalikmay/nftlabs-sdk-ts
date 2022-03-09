@@ -30,9 +30,11 @@ interface CidWithFileName {
 
 export class IpfsStorage implements IStorage {
   private gatewayUrl: string;
+  private jwtToken?: string;
 
-  constructor(gatewayUrl: string) {
+  constructor(gatewayUrl: string, jwtToken?: string) {
     this.gatewayUrl = `${gatewayUrl.replace(/\/$/, "")}/`;
+    this.jwtToken = jwtToken;
   }
 
   public async upload(
@@ -106,7 +108,8 @@ export class IpfsStorage implements IStorage {
     contractAddress?: string,
     fileStartNumber = 0,
   ): Promise<CidWithFileName> {
-    const token = await this.getUploadToken(contractAddress || "");
+    const token =
+      this.jwtToken || (await this.getUploadToken(contractAddress || ""));
     const metadata = {
       name: `CONSOLE-TS-SDK-${contractAddress}`,
     };

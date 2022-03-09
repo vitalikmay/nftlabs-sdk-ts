@@ -1,4 +1,4 @@
-import { ERC20__factory } from "@3rdweb/contracts";
+import { ERC20__factory } from "3rdweb-contracts";
 import { AddressZero } from "@ethersproject/constants";
 import { Provider } from "@ethersproject/providers";
 import { formatUnits } from "@ethersproject/units";

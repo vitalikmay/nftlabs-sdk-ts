@@ -3,12 +3,12 @@ import {
   ERC20__factory,
   Pack as PackContract,
   Pack__factory,
-} from "@3rdweb/contracts";
+} from "3rdweb-contracts";
 
 import {
   PackCreatedEvent,
   PackOpenRequestEvent,
-} from "@3rdweb/contracts/dist/Pack";
+} from "3rdweb-contracts/dist/Pack";
 import { TransactionReceipt } from "@ethersproject/providers";
 import { BigNumber, BigNumberish, BytesLike, Contract, ethers } from "ethers";
 import {

@@ -11,9 +11,14 @@ import {
  */
 export interface ISDKOptions {
   /**
-   * An optional IPFS Gateway. (Default: `https://cloudflare-ipfs.com/ipfs/`).
+   * An optional IPFS Gateway. (Default: `https://gateway.pinata.cloud/ipfs/`).
    */
   ipfsGatewayUrl: string;
+
+  /**
+   * An optional IPFS JWT token.
+   */
+  ipfsJwtToken?: string;
 
   /**
    * Optional Registry Contract Address

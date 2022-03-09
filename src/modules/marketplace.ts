@@ -5,11 +5,11 @@ import {
   ERC721__factory,
   Marketplace,
   Marketplace__factory,
-} from "@3rdweb/contracts";
+} from "3rdweb-contracts";
 import {
   ListingParametersStruct,
   ListingStruct,
-} from "@3rdweb/contracts/dist/IMarketplace";
+} from "3rdweb-contracts/dist/IMarketplace";
 import { AddressZero } from "@ethersproject/constants";
 import { BigNumber, BigNumberish, ethers } from "ethers";
 import { isAddress } from "ethers/lib/utils";

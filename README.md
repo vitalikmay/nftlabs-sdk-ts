@@ -1,4 +1,5 @@
 # thirdweb-sdk
+## **NOTE:** this is a fork of [thirdweb-sdk](https://github.com/nftlabs/nftlabs-sdk-ts)
 
 ### Docs
 

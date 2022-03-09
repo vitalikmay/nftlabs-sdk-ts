@@ -32,5 +32,6 @@
     "noEmit": true,
     "target": "ES6",
     "allowSyntheticDefaultImports": true,
+    "outDir": "./dist",
   }
 }

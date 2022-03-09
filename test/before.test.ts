@@ -1,4 +1,4 @@
-import { WETH9__factory } from "@3rdweb/contracts";
+import { WETH9__factory } from "3rdweb-contracts";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { ethers } from "ethers";
 import { ethers as hardhatEthers } from "hardhat";

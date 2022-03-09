@@ -3,7 +3,7 @@ import {
   ERC721__factory,
   NFTCollection as NFTBundleContract,
   NFTCollection__factory,
-} from "@3rdweb/contracts";
+} from "3rdweb-contracts";
 import { BigNumber, BigNumberish } from "@ethersproject/bignumber";
 import { TransactionReceipt } from "@ethersproject/providers";
 import { BytesLike } from "ethers";

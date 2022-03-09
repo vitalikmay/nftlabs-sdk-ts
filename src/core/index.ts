@@ -1,4 +1,4 @@
-import { Forwarder__factory } from "@3rdweb/contracts";
+import { Forwarder__factory } from "3rdweb-contracts";
 import { Provider } from "@ethersproject/providers";
 import { parseUnits } from "@ethersproject/units";
 import {
@@ -87,7 +87,7 @@ export class ThirdwebSDK implements IThirdwebSdk {
   // default options
   private options: ISDKOptions;
   private defaultOptions: ISDKOptions = {
-    ipfsGatewayUrl: "https://cloudflare-ipfs.com/ipfs/",
+    ipfsGatewayUrl: "https://gateway.pinata.cloud/ipfs/",
     registryContractAddress: "",
     maxGasPriceInGwei: 300,
     gasSpeed: "fastest",
@@ -144,7 +144,10 @@ export class ThirdwebSDK implements IThirdwebSdk {
       ...this.defaultOptions,
       ...opts,
     };
-    this.storage = new IpfsStorage(this.options.ipfsGatewayUrl);
+    this.storage = new IpfsStorage(
+      this.options.ipfsGatewayUrl,
+      this.options.ipfsJwtToken,
+    );
   }
 
   private updateModuleSigners() {

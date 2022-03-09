@@ -5,7 +5,7 @@ import {
   ERC721__factory,
   Market,
   Market__factory,
-} from "@3rdweb/contracts";
+} from "3rdweb-contracts";
 import { AddressZero } from "@ethersproject/constants";
 import { TransactionReceipt } from "@ethersproject/providers";
 import { BigNumber, BigNumberish } from "ethers";

@@ -1,4 +1,4 @@
-import { DataStore, DataStore__factory } from "@3rdweb/contracts";
+import { DataStore, DataStore__factory } from "3rdweb-contracts";
 import { TransactionReceipt } from "@ethersproject/providers";
 import { BigNumberish, ethers } from "ethers";
 import { ModuleType, Role, RolesMap } from "../common";

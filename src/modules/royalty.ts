@@ -1,4 +1,4 @@
-import { ERC20__factory, Royalty, Royalty__factory } from "@3rdweb/contracts";
+import { ERC20__factory, Royalty, Royalty__factory } from "3rdweb-contracts";
 import { BigNumber } from "ethers";
 import { ModuleType } from "../common";
 import {

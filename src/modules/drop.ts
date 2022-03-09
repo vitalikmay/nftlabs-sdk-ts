@@ -4,9 +4,9 @@ import {
   LazyMintERC721__factory as DropV2__factory,
   LazyNFT as Drop,
   LazyNFT__factory as Drop__factory,
-} from "@3rdweb/contracts";
-import { ClaimConditionStructOutput } from "@3rdweb/contracts/dist/LazyMintERC721";
-import { PublicMintConditionStruct } from "@3rdweb/contracts/dist/LazyNFT";
+} from "3rdweb-contracts";
+import { ClaimConditionStructOutput } from "3rdweb-contracts/dist/LazyMintERC721";
+import { PublicMintConditionStruct } from "3rdweb-contracts/dist/LazyNFT";
 import { hexZeroPad } from "@ethersproject/bytes";
 import { AddressZero } from "@ethersproject/constants";
 import { TransactionReceipt } from "@ethersproject/providers";

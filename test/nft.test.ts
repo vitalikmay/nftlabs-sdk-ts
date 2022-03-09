@@ -1,4 +1,4 @@
-import { NFT, NFT__factory } from "@3rdweb/contracts";
+import { NFT, NFT__factory } from "3rdweb-contracts";
 import { AddressZero } from "@ethersproject/constants";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { assert, expect } from "chai";

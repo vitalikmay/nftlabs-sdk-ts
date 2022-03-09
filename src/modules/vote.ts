@@ -2,7 +2,7 @@ import {
   ERC20__factory,
   VotingGovernor,
   VotingGovernor__factory,
-} from "@3rdweb/contracts";
+} from "3rdweb-contracts";
 import { TransactionReceipt } from "@ethersproject/providers";
 import { BigNumber, ethers } from "ethers";
 import {

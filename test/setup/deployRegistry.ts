@@ -2,7 +2,7 @@ import {
   ControlDeployer__factory,
   Forwarder__factory,
   Registry__factory,
-} from "@3rdweb/contracts";
+} from "3rdweb-contracts";
 import { ethers, Signer } from "ethers";
 
 export async function deployRegistry(signer: Signer): Promise<string> {

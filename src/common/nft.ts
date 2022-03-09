@@ -4,7 +4,7 @@ import {
   LazyNFT,
   NFT,
   NFTCollection,
-} from "@3rdweb/contracts";
+} from "3rdweb-contracts";
 import { Contract } from "@ethersproject/contracts";
 import { JSONValue, ProviderOrSigner } from "../core/types";
 import { IStorage } from "../interfaces/IStorage";
